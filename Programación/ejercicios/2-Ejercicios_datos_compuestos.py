@@ -188,6 +188,23 @@ print("mensaje:", mensaje)
 #Crea una variable cumple_permiso. Si el requisito de permiso es True, debe comprobarse el permiso del candidato. Si no se requiere permiso, debe valer True.
 #Usa if, elif y else para crear un mensaje final: Acceso concedido, Curso no disponible, No cumple requisitos o Solicitud incompleta.
 #Usa una ternaria para crear un estado breve: Apto si el mensaje final es Acceso concedido, o No apto en caso contrario.
-#Muestra por consola el nombre del candidato, el curso elegido, el estado breve y el mensaje final.
+#Muestra por consola el nombre del candidato, el curso elegido, el estado breve y el mensaje final
+requisitos = (21,8,True)
+candidato ={"nombre":"Cesar", "edad":30, "nota":9.5, "permiso":True}
+cursos_disponibles = {"Estadistica","Programacion", "IA"}
+curso_elegido = "IA"
+curso_existe = curso_elegido in cursos_disponibles
+cumple_edad= candidato ["edad"]  >= requisitos [0]
+cumple_nota = candidato ["nota"] >= requisitos [1]
+cumple_permiso = candidato ["permiso"] if requisitos [2] else True
 
-
+if not curso_existe:
+    mensaje_final ="curso no disponible"
+elif cumple_edad and cumple_nota and cumple_permiso:
+    mensaje_final = "acceso concedido"
+else:
+    mensaje_final = "no cumple requisitos"
+estado_breve ="Apto" if mensaje_final == "acceso concedido" else "No apto"
+print("nombre del candidato:",candidato["nombre"])
+print("curso elegido:",curso_elegido)
+print("estado breve:",estado_breve)
