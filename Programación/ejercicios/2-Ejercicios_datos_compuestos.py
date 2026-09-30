@@ -43,7 +43,7 @@ print("valor total del stock:",valor_total_stock)
 # Cambia la nota del alumno por otro valor.
 #Añade una nueva clave llamada aprobado. Su valor debe ser el resultado de comprobar si la nota es mayor o igual que 5.
 # Muestra por consola el diccionario completo al final.
-alumno={"nombre":"Ana", "edad":16, "curso":"IA", "nota":.5}
+alumno={"nombre":"Ana", "edad":16, "curso":"IA", "nota":7.5}
 print("nombre del alumno:",alumno["nombre"])
 print("nota del alumno:",alumno["nota"])
 alumno["nota"]= 4.5
