@@ -1,0 +1,7 @@
+ML: con estos datos hay que crear las siguientes estructuras de Python:
+-Diccionario.
+-Lista de Diccionarios.
+-11 listas separadas.
+-Lista de tuplas.
+
+Hay que crear 4 DataFrames a partir de sendas estructuras de datos
