@@ -30,9 +30,15 @@ promedio=sum(notas)/len(notas)
 print(promedio)
 
 #Mostrar la nota más alta y la nota más baja.
-for nota > notas:
-    nota_alta=nota
-print("nota alta:", nota_alta)
+nota_mas_alta= notas[0]
+nota_mas_baja= notas[0]
+for nota in notas:
+    if nota > nota_mas_alta:
+        nota_mas_alta=nota
+    if nota < nota_mas_baja:
+        nota_mas_baja=nota
+print("nota alta:", nota_mas_alta)
+print("nota baja:", nota_mas_baja)
 
 
 # Indicar si la media final está aprobada o suspendida.
@@ -64,4 +70,66 @@ else:
     total_descuento=precio_total
 print("Total con descuento:",total_descuento)
 
+#Ejercicio 3. Registro de Alumno
+#Crea un diccionario llamado alumno con los siguientes datos:
+#El programa debe:
+#Mostrar todos los datos del alumno.
 
+#Condición: Debe utilizar diccionarios, if, elif, else y operadores lógicos.
+
+alumno = {"nombre": "Cesar", "Edad": 24 ,"curso": "Python", "nota_media":7 , "faltas":4}
+print ("datos del alumno:",alumno)
+
+#Indicar si el alumno aprueba. Aprueba si su nota_media es mayor o igual que 5.
+if alumno["nota_media"] >=5:
+    print(" Aprueba")
+#Indicar si debe recibir un aviso. Recibe aviso si tiene más de 10 faltas.
+if alumno ["faltas"] >10:
+    print ("Debe recibir un aviso")
+
+#Mostrar un mensaje final combinando el resultado académico y el aviso por faltas.
+
+if alumno["nota_media"] >=5 and alumno ["faltas"] >10:
+    print("Aprueba pero debe recibir un aviso")
+elif alumno["nota_media"] >=5 and alumno ["faltas"] <=10:
+    print("Aprueba y no debe recibir un aviso")
+elif alumno["nota_media"] <5 and alumno ["faltas"] >10:
+    print("No aprueba y debe recibir un aviso")
+else:
+    print("No aprueba y no debe recibir un aviso")
+
+#Ejercicio 4. Números pares, impares y múltiplos
+#Usando range, recorre los números del 1 al 50.
+#El programa debe:
+#Contar cuántos números son pares.
+#Contar cuántos números son impares.
+#Contar cuántos números son múltiplos de 5.
+#Mostrar los tres resultados finales.
+#Condición: Debe utilizar for, range, el operador módulo % y contadores.
+contar_pares=0
+contar_impares=0
+contar_multiplos_5=0
+for i in range (1,51):
+    if i%2==0:
+        contar_pares=contar_pares+1
+    else:
+        contar_impares=contar_impares+1
+
+    if i%5==0:
+        contar_multiplos_5=contar_multiplos_5+1
+
+print("Números pares:", contar_pares)
+print("Números impares:", contar_impares)
+print("Números múltiplos de 5:", contar_multiplos_5)
+
+
+#Ejercicio 5. Validación de contraseña
+#Crea una variable llamada password con una contraseña de prueba.
+#El programa debe:
+# Comprobar si la contraseña tiene al menos 8 caracteres.
+# Comprobar si contiene el símbolo @.
+# Comprobar que no sea igual a 12345678.
+# Si cumple todas las condiciones, mostrar Contraseña válida.
+# En caso contrario, mostrar Contraseña no válida.
+#Condición: Debe utilizar strings, len, operadores lógicos y condicionales. Para comprobar si aparece @ dentro
+#del texto puede utilizarse "@" in password.
