@@ -248,3 +248,21 @@ for usuario in usuarios:
 # Si un intento coincide con el código correcto, mostrar Acceso concedido y terminar el bucle.
 # Si después de todos los intentos no se encuentra el código correcto, mostrar Acceso denegado.
 # Condición: Debe utilizar listas, for, if, elif, else, break, pass, una variable booleana y un condicional final.
+codigo_correcto = "hola"
+intentos =["Uno","Tres","", 456, "157@","Nada", "Hola"]
+encontrado = False
+
+for intento in intentos:
+    print(f"Intento realizado :{intento}")
+
+    if intento == "":
+        pass # Marcador pass para intentos vacíos
+    elif intento == codigo_correcto:
+        print("Acceso concedido")
+        encontrado= True
+        break #termina el bucle al encontrar el codigo correcto.
+    else:
+        pass
+if not encontrado:
+    print("Acceso denegado")
+
