@@ -196,3 +196,50 @@ print("Puntaje maximo :", puntaje_maximo)
 print("Puntaje minimo :", puntaje_minimo)
 print("Edad mayor de postulantes:", edad_max)
 print("Edad menor de postulantes:", edad_min)
+
+#Ejercicio 11. Crear una columna de nivel
+#Añade una nueva columna llamada nivel.
+#La columna debe clasificar a cada persona según sus puntos.
+#- "alto" si tiene 40 puntos o más.
+#- "medio" si tiene entre 35 y 39 puntos.
+#- "bajo" si tiene menos de 35 puntos.
+print("Ejercicio 11")
+def clasificar_nivel(puntos):
+    if puntos>=40:
+        return "alto"
+    elif puntos<=35:
+        return "medio"
+    else:
+        return "bajo"
+df["nivel"] =df ["puntos"].apply(clasificar_nivel)
+print(df)
+
+#Ejercicio 12. Agrupar por nivel
+#Agrupa los datos por la columna nivel.
+#Calcula cuántas personas hay en cada nivel, la media de edad en cada nivel y la media de puntos en
+#cada nivel.
+#- Método recomendado: groupby()
+print("Ejercicio 12")
+grupo_nivel =df.groupby("nivel")
+contador_nivel=grupo_nivel["nombre"].count()# Cantidad de personas por nivel
+print(contador_nivel)
+media_edad_nivel =grupo_nivel["edad"].mean()#Media de edad por nivel
+print(media_edad_nivel)
+media_puntos_nivel =grupo_nivel["puntos"].mean()#Media de puntos por nivel
+print(media_puntos_nivel)
+
+#Ejercicio 13. Seleccionar columnas concretas
+#Crea un nuevo DataFrame que solo contenga las columnas nombre, puntos y apto.
+#Este ejercicio sirve para practicar cómo seleccionar solo la información importante.
+
+print("Ejercicio 13")
+df_nuevo=df[["nombre", "puntos", "apto"]]
+print(df_nuevo)
+
+#Ejercicio 14. Renombrar columnas
+#Renombra las columnas para que tengan nombres más descriptivos.
+#Por ejemplo, nombre puede pasar a Nombre del candidato y puntos a Puntuación.
+#- Método recomendado: rename().
+print("Ejercicio 14")
+df_renombre = df.rename( columns={"nombre":"Nombre del candidato","puntos":"Puntuación" })
+print(df_renombre)
