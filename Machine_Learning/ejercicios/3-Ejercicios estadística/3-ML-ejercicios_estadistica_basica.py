@@ -99,3 +99,57 @@ print("¿Coinciden los tres métodos?:", mediana_bucle == mediana_funciones == m
 
 #Interpretacion del resultado:
 # Representa el centro posicional de los datos porque divide la distribución en dos partes iguales: exactamente el 50% de los alumnos obtuvo una nota igual o menor a 75, y el otro 50% obtuvo una nota igual o mayor
+
+# Ejercicio 4. Moda
+# Calcula la moda de puntos_prueba con el Método 1: recorre la lista con un bucle y crea un diccionario de frecuencias.
+# Calcula la misma moda con el Método 2: usa set(), count(), max() y una lambda para encontrar el valor más repetido.
+# Calcula la misma moda con el Método 3: pandas usando .mode().
+# Muestra los tres resultados con nombres claros: moda_bucle, moda_funciones y moda_pandas.
+# Comprueba que los tres resultados coinciden.
+# Explica qué significa que ese valor sea la moda.
+
+# Método 1: Bucle for y diccionario de frecuencias
+frecuencias = {}
+for valor in puntos:
+    if valor in frecuencias:
+        frecuencias[valor] += 1
+    else:
+        frecuencias[valor] = 1
+
+# Encontrar la clave con la mayor frecuencia acumulada
+moda_bucle = None
+max_frecuencia = 0
+for clave, cant in frecuencias.items():
+    if cant > max_frecuencia:
+        max_frecuencia = cant
+        moda_bucle = clave
+print("La Moda de puntos de prueba (bucle): ", moda_bucle)
+
+# Método 2: Python funcional (set, count, max y key)
+# set(puntos) toma los valores únicos y max() evalúa cuál se repite más mediante puntos.count
+moda_funciones = max(set(puntos), key=lambda x: puntos.count(x))
+
+print("La moda de puntos de prueba (funcional): ", moda_funciones)
+
+# Método 3: pandas usando .mode().
+moda_pandas = df["puntos_prueba"].mode()[0]
+print("La moda de puntos de prueba (panda): ", moda_pandas)
+
+# Comprobación de que coinciden
+print("¿Coinciden los tres métodos?:", moda_bucle == moda_funciones == moda_pandas)
+
+#Ejercicio 5. Desviación de cada dato respecto a la media
+# Calcula primero la media de puntos_prueba.
+# Calcula una lista de desviaciones con el Método 1: bucle for y append(). Cada valor debe ser punto - media.
+# Calcula la misma lista con el Método 2: map() y lambda.
+# Calcula las mismas desviaciones con el Método 3: pandas, restando la media directamente a la columna y creando una columna llamada desviacion.
+# Muestra las tres versiones y comprueba que contienen los mismos valores.
+# Explica qué significa que una desviación sea positiva, negativa o cero.
+
+media = media_pandas  # 74.0
+
+# Método 1: Bucle for y append()
+desviaciones_bucle = []
+for p in puntos:
+    desviaciones_bucle.append(p - media)
+
