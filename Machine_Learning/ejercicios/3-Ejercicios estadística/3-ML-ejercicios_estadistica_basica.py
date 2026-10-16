@@ -146,10 +146,65 @@ print("¿Coinciden los tres métodos?:", moda_bucle == moda_funciones == moda_pa
 # Muestra las tres versiones y comprueba que contienen los mismos valores.
 # Explica qué significa que una desviación sea positiva, negativa o cero.
 
-media = media_pandas  # 74.0
+media = media_panda  # 74.0
 
 # Método 1: Bucle for y append()
 desviaciones_bucle = []
 for p in puntos:
     desviaciones_bucle.append(p - media)
+print("Desviacion (bucle): ", desviaciones_bucle)
+
+# Método 2: map() y lambda
+desviaciones_funciones = list(map(lambda p: p - media, puntos))
+print("desviaciones (funciones): ", desviaciones_funciones)
+
+# Método 3: Pandas (crear columna en el DataFrame)
+df["desviacion"] = df["puntos_prueba"] - df["puntos_prueba"].mean()
+desviaciones_pandas = list(df["desviacion"])
+print("desviaciones (panda): ", desviaciones_pandas)
+
+# Comprobación de que coinciden
+print("¿Coinciden los tres métodos?:", desviaciones_bucle == desviaciones_funciones == desviaciones_pandas)
+
+#Positiva (> 0): Indica que la nota del alumno está por encima de la media del grupo (por ejemplo, +6.0 o +26.0).
+#Negativa (< 0): Indica que la nota del alumno está por debajo de la media del grupo (por ejemplo, -24.0 o -14.0).
+#Cero (= 0): Significa que la nota del alumno coincide exactamente con la media general.
+
+#Ejercicio 6. Varianza
+# Calcula la varianza de puntos_prueba con el Método 1: bucle for, desviaciones, cuadrados y promedio final.
+# Recuerda: primero se calcula cada desviación, después se eleva al cuadrado y finalmente se hace la media de esos cuadrados.
+# Calcula la misma varianza con el Método 2: map(), lambda, sum() y len().
+# Calcula la misma varianza con el Método 3: pandas usando ddof=0.
+# Muestra los tres resultados con nombres claros: varianza_bucle, varianza_funciones y varianza_pandas.
+# Comprueba que los tres resultados coinciden.
+# Explica qué nos dice la varianza sobre el grupo.
+
+# Usamos la media calculada previamente
+media = float(media_panda)
+
+# Método 1: Bucle for, acumulador de desviaciones al cuadrado y división por n
+suma_cuadrados = 0
+n=len(puntos)
+for p in puntos:
+    suma_cuadrados += (p - media) ** 2
+
+varianza_bucle = suma_cuadrados / n
+
+print("La varianza (bucle): ", varianza_bucle)
+
+# Método 2: Funciones (sum, map y lambda dividiendo entre len)
+varianza_funciones = sum(map(lambda p: (p - media) ** 2, puntos)) / n
+print("La varianza (funciones): ",varianza_funciones)
+
+# Método 3: Pandas (usando ddof=0 para varianza poblacional)
+varianza_pandas = float(df["puntos_prueba"].var(ddof=0))
+print("La varianza(pandas): ",varianza_pandas)
+
+# Comprobación de que coinciden
+print("¿Coinciden los tres métodos?:", varianza_bucle == varianza_funciones == varianza_pandas)
+
+#Explicación del resultado.
+#¿Qué representa la varianza y por qué sus unidades están al cuadrado?
+
+La varianza mide el grado de dispersión o separación de los datos respecto a su media aritmética, en este caso resulta 204.0
 

@@ -12,7 +12,6 @@ for nota in notas:
         aprobadas=aprobadas+1
     else :
         desaprobados=desaprobados+1
-
 print(notas)
 print("Contar notas aprobados:", aprobadas)
 print("Contar notas desaprobados", desaprobados)
