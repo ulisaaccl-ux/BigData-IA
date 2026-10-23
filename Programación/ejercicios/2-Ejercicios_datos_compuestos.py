@@ -76,7 +76,7 @@ print("total_usuarios:", total_usuarios)
 edad = 23
 tiene_permiso = True
 es_socio = False
-sancionado = False
+sancionado = True
 acceso_por_edad = edad >= 16 and tiene_permiso
 acceso_por_socio = es_socio and not sancionado
 puede_acceder = acceso_por_edad or acceso_por_socio
